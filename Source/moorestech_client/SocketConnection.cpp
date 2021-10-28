@@ -18,7 +18,7 @@ ASocketConnection::ASocketConnection()
 // Called when the game starts or when spawned
 void ASocketConnection::BeginPlay()
 {
-	UE_LOG(LogTemp, Display, TEXT("接続開始"));
+	UE_LOG(LogTemp, Display, TEXT("TCPコネクション　接続開始"));
 	FIPv4Address IPAddress;
 	FIPv4Address::Parse(FString("127.0.0.1"),IPAddress);
 	FIPv4Endpoint Endpoint(IPAddress,(uint16)11564);
