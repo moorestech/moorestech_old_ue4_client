@@ -6,6 +6,9 @@
 #include "GameFramework/Actor.h"
 #include "SocketConnection.generated.h"
 
+
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FNetEventS);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FNetMsgEvent, const TArray<uint8>&, Bytes);
 UCLASS()
 class MOORESTECH_CLIENT_API ASocketConnection : public AActor
 {
@@ -14,6 +17,8 @@ class MOORESTECH_CLIENT_API ASocketConnection : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ASocketConnection();
+	UPROPERTY(BlueprintReadWrite, BlueprintAssignable, BlueprintCallable)
+	FNetMsgEvent OnReceivedBytes;
 
 protected:
 	// Called when the game starts or when spawned
@@ -23,6 +28,13 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 private:
-	FSocket* ListenSocket;
+	int32 BufferMaxSize;
+	bool bIsConnected;
+	TSharedPtr<FInternetAddr> RemoteAdress;
+	FSocket * ClientSocket;
+	FNetEventS OnConnected;
+	FThreadSafeBool bShouldReceiveData;
+	TFuture<void> ClientConnectionFinishedFuture;
+	void ConnectToServer(const FString& InIP = TEXT("127.0.0.1"), const int32 InPort = 3000); 
 
 };
