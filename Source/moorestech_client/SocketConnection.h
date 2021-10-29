@@ -21,6 +21,9 @@ public:
 	FNetMsgEvent OnReceivedBytes;
 	FString ClientSocketName;
 	FNetEventS OnConnected;
+	
+	void CloseSocket();
+	bool Emit(const TArray<uint8>& Bytes);
 
 protected:
 	// Called when the game starts or when spawned
@@ -36,6 +39,7 @@ private:
 	FSocket * ClientSocket;
 	FThreadSafeBool bShouldReceiveData;
 	TFuture<void> ClientConnectionFinishedFuture;
-	void ConnectToServer(const FString& InIP = TEXT("127.0.0.1"), const int32 InPort = 3000); 
+	
+	void ConnectToServer(const FString& InIP = TEXT("127.0.0.1"), const int32 InPort = 3000);
 
 };

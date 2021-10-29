@@ -95,3 +95,31 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 	);
 }
 
+bool ASocketConnection::Emit(const TArray<uint8>& Bytes)
+{
+	bool resp = false;
+
+	//接続があるかどうかを確認します
+	if (ClientSocket && ClientSocket->GetConnectionState() == SCS_Connected)
+	{
+		int32 BytesSent = 0; // 送信されたバイト数
+		resp = ClientSocket->Send(Bytes.GetData(), Bytes.Num(), BytesSent);
+	}
+	return resp;
+}
+
+void ASocketConnection::CloseSocket()
+{
+	// ソケットがある場合
+	if (ClientSocket)
+	{
+		// データの受信を停止します
+		bShouldReceiveData = false;
+
+		//接続を終了します
+		ClientConnectionFinishedFuture.Get();
+		ClientSocket->Close();
+		ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(ClientSocket);
+		ClientSocket = nullptr;
+	}
+}
