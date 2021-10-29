@@ -30,7 +30,7 @@ void ASocketConnection::Tick(float DeltaTime)
 void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 {
 
-	// формируем адрес подключения
+	// 接続アドレスを形成します
 	RemoteAdress = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
 
 	UE_LOG(LogTemp, Error, TEXT("TCP address try to connect <%s:%d>"), *InIP, InPort);
@@ -39,56 +39,56 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 	RemoteAdress->SetIp(*InIP, bIsValid);
 	RemoteAdress->SetPort(InPort);
 
-	// чекаем валидность адреса подключения
+	// 接続アドレスの有効性を確認してください
 	if (!bIsValid)
 	{
 		UE_LOG(LogTemp, Error, TEXT("TCP address is invalid <%s:%d>"), *InIP, InPort);
 		return;
 	}
 
-	// Получаем подсистему сокетов
+	// ソケットサブシステムの取得
 	ClientSocket = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateSocket(NAME_Stream, ClientSocketName, false);
 
-	// Устанавливаем размер буфера отправки/приема
+	// 送信/受信バッファのサイズを設定します
 	ClientSocket->SetSendBufferSize(BufferMaxSize, BufferMaxSize);
 	ClientSocket->SetReceiveBufferSize(BufferMaxSize, BufferMaxSize);
 
-	// конектимся
+	// フックアップ
 	bIsConnected = ClientSocket->Connect(*RemoteAdress);
 
-	// если подключились бродкастим эвент
+	// 放送イベントが接続されている場合
 	if (bIsConnected)
 	{
 		OnConnected.Broadcast();
 	}
 
-	// говорим что готовы получать данные
+	// データを受信する準備ができていると言います
 	bShouldReceiveData = true;
 
-	// Слушатель данных
+	// データリスナー
 	ClientConnectionFinishedFuture = Async(EAsyncExecution::Thread, [&]()
 		{
 			uint32 BufferSize = 0;
 			TArray<uint8> ReceiveBuffer;
 			FString ResultString;
 
-			// запускаем бесконечный цикл получения данных
+			// データを受信するための無限ループを開始する
 			while (bShouldReceiveData)
 			{
-				// если есть данные
+				//データがある場合
 				if (ClientSocket->HasPendingData(BufferSize))
 				{
-					// устанавливаем размер буфера
+					// バッファサイズを設定する
 					ReceiveBuffer.SetNumUninitialized(BufferSize);
 
 					int32 Read = 0;
 					ClientSocket->Recv(ReceiveBuffer.GetData(), ReceiveBuffer.Num(), Read);
 
-					// отправляем буфер в эвент
+					//イベントにバッファを送信します
 					OnReceivedBytes.Broadcast(ReceiveBuffer);
 
 				}
-				// пропускаем 1 тик
+				// 1ティックスキップ
 				ClientSocket->Wait(ESocketWaitConditions::WaitForReadOrWrite, FTimespan(1));
 			}
 		}

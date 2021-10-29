@@ -19,6 +19,8 @@ public:
 	ASocketConnection();
 	UPROPERTY(BlueprintReadWrite, BlueprintAssignable, BlueprintCallable)
 	FNetMsgEvent OnReceivedBytes;
+	FString ClientSocketName;
+	FNetEventS OnConnected;
 
 protected:
 	// Called when the game starts or when spawned
@@ -32,7 +34,6 @@ private:
 	bool bIsConnected;
 	TSharedPtr<FInternetAddr> RemoteAdress;
 	FSocket * ClientSocket;
-	FNetEventS OnConnected;
 	FThreadSafeBool bShouldReceiveData;
 	TFuture<void> ClientConnectionFinishedFuture;
 	void ConnectToServer(const FString& InIP = TEXT("127.0.0.1"), const int32 InPort = 3000); 
