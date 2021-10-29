@@ -16,8 +16,8 @@ ASocketConnection::ASocketConnection()
 // Called when the game starts or when spawned
 void ASocketConnection::BeginPlay()
 {
-	
-	
+	UE_LOG(LogTemp, Display, TEXT("サーバーへ接続開始"));
+	this->ConnectToServer(TEXT("127.0.0.1"), 11564);
 }
 
 // Called every frame
