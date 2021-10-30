@@ -8,7 +8,6 @@
 
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FNetEventS);
-DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FNetMsgEvent, const TArray<uint8>&, Bytes);
 UCLASS()
 class MOORESTECH_CLIENT_API ASocketConnection : public AActor
 {
@@ -17,11 +16,7 @@ class MOORESTECH_CLIENT_API ASocketConnection : public AActor
 public:	
 	// Sets default values for this actor's properties
 	ASocketConnection();
-	UPROPERTY(BlueprintReadWrite, BlueprintAssignable, BlueprintCallable)
-	FNetMsgEvent OnReceivedBytes;
 	FString ClientSocketName;
-	FNetEventS OnConnected;
-	
 	void CloseSocket();
 	bool Emit(const TArray<uint8>& Bytes);
 

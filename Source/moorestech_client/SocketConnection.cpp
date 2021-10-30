@@ -56,19 +56,13 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 	// フックアップ
 	bIsConnected = ClientSocket->Connect(*RemoteAdress);
 
-	// 放送イベントが接続されている場合
-	if (bIsConnected)
-	{
-		OnConnected.Broadcast();
-	}
-
 	// データを受信する準備ができていると言います
 	bShouldReceiveData = true;
 
 	// データリスナー
 	ClientConnectionFinishedFuture = Async(EAsyncExecution::Thread, [&]()
 		{
-			uint32 BufferSize = 0;
+			uint32 BufferSize = 4096;
 			TArray<uint8> ReceiveBuffer;
 			FString ResultString;
 
@@ -83,9 +77,6 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 
 					int32 Read = 0;
 					ClientSocket->Recv(ReceiveBuffer.GetData(), ReceiveBuffer.Num(), Read);
-
-					//イベントにバッファを送信します
-					OnReceivedBytes.Broadcast(ReceiveBuffer);
 
 				}
 				// 1ティックスキップ
