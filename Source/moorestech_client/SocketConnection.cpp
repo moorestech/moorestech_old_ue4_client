@@ -74,17 +74,17 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 			TArray<uint8> ReceiveBuffer;
 			FString ResultString;
 			UE_LOG(LogTemp, Log, TEXT("データリスナー"));
+			ReceiveBuffer.SetNumUninitialized(BufferSize);
 
 			// データを受信するための無限ループを開始する
 			while (bShouldReceiveData)
 			{
 					UE_LOG(LogTemp, Log, TEXT("バッファサイズを設定"));
 					// バッファサイズを設定する
-					ReceiveBuffer.SetNumUninitialized(BufferSize);
 
 					int32 Read = 0;
 					ClientSocket->Recv(ReceiveBuffer.GetData(), ReceiveBuffer.Num(), Read);
-					UE_LOG(LogTemp, Log, TEXT("データ受信: %s"), *(fBytesToString(ReceiveBuffer)));
+					UE_LOG(LogTemp, Log, TEXT("データ受信"));
 			}
 		}
 	);
@@ -117,12 +117,4 @@ void ASocketConnection::CloseSocket()
 		ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(ClientSocket);
 		ClientSocket = nullptr;
 	}
-}
-
-
-FString ASocketConnection::fBytesToString(const TArray<uint8>& InArray)
-{
-	FString ResultString;
-	FFileHelper::BufferToString(ResultString, InArray.GetData(), InArray.Num());
-	return ResultString;
 }
