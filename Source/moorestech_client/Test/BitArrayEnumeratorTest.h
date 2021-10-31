@@ -13,5 +13,8 @@ UCLASS()
 class MOORESTECH_CLIENT_API ABitArrayEnumeratorTest : public AFunctionalTest
 {
 	GENERATED_BODY()
+
+	public:
+	bool RunTest(int seed);
 	
 };
