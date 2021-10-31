@@ -30,7 +30,7 @@ public:
 private:
 	int32 BufferMaxSize;
 	bool bIsConnected;
-	TSharedPtr<FInternetAddr> RemoteAdress;
+	TSharedPtr<FInternetAddr> RemoteAddress;
 	FSocket * ClientSocket;
 	FThreadSafeBool bShouldReceiveData;
 	TFuture<void> ClientConnectionFinishedFuture;

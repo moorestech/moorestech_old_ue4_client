@@ -3,6 +3,7 @@
 
 #include "SocketConnection.h"
 
+#include "PacketAnalysis.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
 // Sets default values
@@ -31,13 +32,13 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 {
 
 	// 接続アドレスを形成します
-	RemoteAdress = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
+	RemoteAddress = ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->CreateInternetAddr();
 
 	UE_LOG(LogTemp, Error, TEXT("TCP address try to connect <%s:%d>"), *InIP, InPort);
 
 	bool bIsValid;
-	RemoteAdress->SetIp(*InIP, bIsValid);
-	RemoteAdress->SetPort(InPort);
+	RemoteAddress->SetIp(*InIP, bIsValid);
+	RemoteAddress->SetPort(InPort);
 
 	// 接続アドレスの有効性を確認してください
 	if (!bIsValid)
@@ -54,7 +55,7 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 	ClientSocket->SetReceiveBufferSize(BufferMaxSize, BufferMaxSize);
 
 	// フックアップ
-	bIsConnected = ClientSocket->Connect(*RemoteAdress);
+	bIsConnected = ClientSocket->Connect(*RemoteAddress);
 
 	// データを受信する準備ができていると言います
 	bShouldReceiveData = true;
@@ -75,16 +76,14 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 			FString ResultString;
 			UE_LOG(LogTemp, Log, TEXT("データリスナー"));
 			ReceiveBuffer.SetNumUninitialized(BufferSize);
+			PacketAnalysis* packetAnalysis = new PacketAnalysis;
 
 			// データを受信するための無限ループを開始する
 			while (bShouldReceiveData)
 			{
-					UE_LOG(LogTemp, Log, TEXT("バッファサイズを設定"));
-					// バッファサイズを設定する
-
-					int32 Read = 0;
-					ClientSocket->Recv(ReceiveBuffer.GetData(), ReceiveBuffer.Num(), Read);
-					UE_LOG(LogTemp, Log, TEXT("データ受信"));
+				int32 Read = 0;
+				ClientSocket->Recv(ReceiveBuffer.GetData(), ReceiveBuffer.Num(), Read);
+				packetAnalysis->Analysis(ReceiveBuffer);
 			}
 		}
 	);
