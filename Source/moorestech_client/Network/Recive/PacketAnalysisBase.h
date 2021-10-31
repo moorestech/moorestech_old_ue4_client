@@ -3,5 +3,5 @@
 class PacketAnalysisBase
 {
 public:
-	virtual void Analusis(TArray<uint8> ReceiveBuffer);
+	virtual void Analysis(TArray<uint8> ReceiveBuffer);
 };
