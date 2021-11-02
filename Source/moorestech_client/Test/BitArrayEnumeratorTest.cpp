@@ -1,18 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "BitArrayEnumeratorTest.h"
-
-#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
-
-
-IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMySimpleTest, "Moorestech.BitArrayEnumeratorTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
-
-//TODO 実装
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FMySimpleTest, "moorestech.BitArrayEnumeratorTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 bool FMySimpleTest::RunTest(const FString& Parameters)
 {
-	TArray<uint8> intArray;
-
-	
 	return true;
 }
