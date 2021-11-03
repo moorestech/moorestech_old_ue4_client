@@ -1,24 +1,34 @@
 ﻿#include "ByteArrayConverter.h"
 
-static TArray<uint8> ToByteArray(int sendData)
+#include "endian.h"
+
+TArray<uint8> ByteArrayConverter::ToByteArray(int sendData)
 {
 	TArray<uint8> result;
 	for (int i = 0; i < 4; i++)
 	{
 		result.Add(sendData >> i * 8);
 	}
+	if(endian::IS_LITTLE_ENDIAN())
+	{
+		result = ReserveTArray(result);
+	}
 	return result;
 }
-static TArray<uint8> ToByteArray(int16 sendData)
+TArray<uint8> ByteArrayConverter::ToByteArray(int16 sendData)
 {
 	TArray<uint8> result;
 	for (int i = 0; i < 2; i++)
 	{
 		result.Add(sendData >> i * 8);
 	}
+	if(endian::IS_LITTLE_ENDIAN())
+	{
+		result = ReserveTArray(result);
+	}
 	return result;
 }
-static TArray<uint8> ToByteArray(float sendData)
+TArray<uint8> ByteArrayConverter::ToByteArray(float sendData)
 {
 	TArray<uint8> result;
 	unsigned char const * p = reinterpret_cast<unsigned char const *>(&sendData);
@@ -26,9 +36,13 @@ static TArray<uint8> ToByteArray(float sendData)
 	{
 		result.Add((uint8)p[i]);
 	}
+	if(endian::IS_LITTLE_ENDIAN())
+	{
+		result = ReserveTArray(result);
+	}
 	return result;
 }
-static TArray<uint8> ToByteArray(FString sendData)
+TArray<uint8> ByteArrayConverter::ToByteArray(FString sendData)
 {
 	FTCHARToUTF8 Convert(*sendData);
 	int BytesLength = Convert.Length(); 
@@ -44,4 +58,16 @@ static TArray<uint8> ToByteArray(FString sendData)
 	FMemory::Free(messageBytes);	
 
 	return result;
+}
+
+TArray<uint8> ByteArrayConverter::ReserveTArray(TArray<uint8> tarray)
+{
+	for (int i = 0;i < tarray.Num()  /2;i++)
+	{
+		int j = tarray.Num() - 1 - i;
+		int w = tarray[i];
+		tarray[i] = tarray[j];
+		tarray[j] = w;
+	}
+	return tarray;
 }
