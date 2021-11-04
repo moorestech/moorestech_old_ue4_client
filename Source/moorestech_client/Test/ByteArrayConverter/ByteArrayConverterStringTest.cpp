@@ -1,16 +1,17 @@
 #include "moorestech_client/Network/Util/ByteArrayConverter.h"
 #include "moorestech_client/Util/StringSplit.h"
-IMPLEMENT_COMPLEX_AUTOMATION_TEST(FMyComplexTest, "moorestech.ByteArrayConverterStringTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+IMPLEMENT_COMPLEX_AUTOMATION_TEST(FByteArrayConverterStringTest, "moorestech.ByteArrayConverterStringTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 
-void FMyComplexTest::GetTests(TArray<FString>& OutBeautifiedNames, TArray<FString>& OutTestCommands) const
+void FByteArrayConverterStringTest::GetTests(TArray<FString>& OutBeautifiedNames, TArray<FString>& OutTestCommands) const
 {
 	//フォーマット　答え,バイト数,byte値1,byte値2,byte値3....
-	OutBeautifiedNames.Add("Test_abv-"); OutTestCommands.Add("abv-,4,97,98,118,43");
-	OutBeautifiedNames.Add("Test_あ０"); OutTestCommands.Add("あ０,5,227,129,239,188,144");
+	OutBeautifiedNames.Add("Test_a"); OutTestCommands.Add("a,1,97");
+	OutBeautifiedNames.Add("Test_abv"); OutTestCommands.Add("abv,3,97,98,118");
+	OutBeautifiedNames.Add("Test_あ"); OutTestCommands.Add("あ,3,227,129,130");
 	OutBeautifiedNames.Add("Test_(["); OutTestCommands.Add("([,2,40,91");
 }
 
-bool FMyComplexTest::RunTest(const FString& Parameters)
+bool FByteArrayConverterStringTest::RunTest(const FString& Parameters)
 {
 	TArray<FString> Strings;
 	Strings = StringSplit::split(Parameters,',');

@@ -1,8 +1,8 @@
 #include "moorestech_client/Network/Util/ByteArrayConverter.h"
 #include "moorestech_client/Util/StringSplit.h"
-IMPLEMENT_COMPLEX_AUTOMATION_TEST(FMyComplexTest, "moorestech.ByteArrayConverterShortTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+IMPLEMENT_COMPLEX_AUTOMATION_TEST(FByteArrayConverterShortTest, "moorestech.ByteArrayConverterShortTest", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 
-void FMyComplexTest::GetTests(TArray<FString>& OutBeautifiedNames, TArray<FString>& OutTestCommands) const
+void FByteArrayConverterShortTest::GetTests(TArray<FString>& OutBeautifiedNames, TArray<FString>& OutTestCommands) const
 {
 	//フォーマット　答え,byte値1,byte値2,byte値3....
 	OutBeautifiedNames.Add("Test_0"); OutTestCommands.Add("0,0,0");
@@ -11,7 +11,7 @@ void FMyComplexTest::GetTests(TArray<FString>& OutBeautifiedNames, TArray<FStrin
 	OutBeautifiedNames.Add("Test_1546"); OutTestCommands.Add("1546,6,10");
 }
 
-bool FMyComplexTest::RunTest(const FString& Parameters)
+bool FByteArrayConverterShortTest::RunTest(const FString& Parameters)
 {
 	TArray<FString> Strings;
 	Strings = StringSplit::split(Parameters,',');
