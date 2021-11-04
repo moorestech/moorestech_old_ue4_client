@@ -3,6 +3,8 @@
 
 #include "CodeTestActor.h"
 
+#include <string>
+
 #include "moorestech_client/Network/Util/ByteArrayConverter.h"
 
 // Sets default values
@@ -17,29 +19,10 @@ ACodeTestActor::ACodeTestActor()
 void ACodeTestActor::BeginPlay()
 {
 	Super::BeginPlay();
-	
-	TArray<uint8> actual;
-	actual = ByteArrayConverter::ToByteArray("a");
-	UE_LOG(LogTemp, Log, TEXT("a"));
-	for (int i = 0;i<actual.Num();i++)
-	{
-		UE_LOG(LogTemp, Log, TEXT("Value=%d"), actual[i]);
-	}
-	
-	actual = ByteArrayConverter::ToByteArray("a");
-	UE_LOG(LogTemp, Log, TEXT("ab"));
-	for (int i = 0;i<actual.Num();i++)
-	{
-		UE_LOG(LogTemp, Log, TEXT("Value=%d"), actual[i]);
-	}
-	
-	actual = ByteArrayConverter::ToByteArray("あ");
-	UE_LOG(LogTemp, Log, TEXT("あ"));
-	for (int i = 0;i<actual.Num();i++)
-	{
-		UE_LOG(LogTemp, Log, TEXT("Value=%d"), actual[i]);
-	}
-	
+	std::string text = "あ";
+
+	char const *c = text.c_str();
+	std::vector<char> bytes(myString.begin(), myString.end());
 }
 
 // Called every frame
