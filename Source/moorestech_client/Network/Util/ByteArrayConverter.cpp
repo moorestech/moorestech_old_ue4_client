@@ -1,5 +1,7 @@
 ﻿#include "ByteArrayConverter.h"
 
+#include <string>
+
 #include "endian.h"
 
 TArray<uint8> ByteArrayConverter::ToByteArray(int sendData)
@@ -44,18 +46,16 @@ TArray<uint8> ByteArrayConverter::ToByteArray(float sendData)
 }
 TArray<uint8> ByteArrayConverter::ToByteArray(FString sendData)
 {
-	FTCHARToUTF8 Convert(*sendData);
-	int BytesLength = Convert.Length(); 
-	uint8* messageBytes = static_cast<uint8*>(FMemory::Malloc(BytesLength));
-	FMemory::Memcpy(messageBytes, (uint8*)TCHAR_TO_UTF8(sendData.GetCharArray().GetData()), BytesLength); 
-
+	std::string data = std::string(TCHAR_TO_UTF8(*sendData));
+	auto messageChar = new char[data.length()];
+	data.copy(messageChar,data.length()-1);
+	
 	TArray<uint8> result;
-	for (int i = 0; i < BytesLength; i++)
+	for (int i = 0; i < data.length() ; i++)
 	{
-		result.Add(messageBytes[i]);
+		result.Add((uint8)messageChar[i]);
 	}
-
-	FMemory::Free(messageBytes);	
+	delete[] messageChar;
 
 	return result;
 }

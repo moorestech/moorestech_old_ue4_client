@@ -6,6 +6,7 @@
 #include <string>
 
 #include "moorestech_client/Network/Util/ByteArrayConverter.h"
+#define ARRAY_LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
 // Sets default values
 ACodeTestActor::ACodeTestActor()
@@ -19,10 +20,12 @@ ACodeTestActor::ACodeTestActor()
 void ACodeTestActor::BeginPlay()
 {
 	Super::BeginPlay();
-	std::string text = "あ";
-
-	char const *c = text.c_str();
-	std::vector<char> bytes(myString.begin(), myString.end());
+	FString ab = "DNあA";
+	auto a = ByteArrayConverter::ToByteArray("DNあA");
+	for (int i = 0;i < ARRAY_LENGTH(a);i++)
+	{
+		UE_LOG(LogTemp, Log, TEXT("MyIntValue = %d"), a[i]);
+	}
 }
 
 // Called every frame
