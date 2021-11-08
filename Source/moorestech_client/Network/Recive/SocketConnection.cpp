@@ -68,7 +68,7 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 
 	UE_LOG(LogTemp, Log, TEXT("データ受信準備"));
 	// データリスナー
-	// TODO 非同期の使い方結構気を付けた方が良いと思われる
+	// TODO 非同期の使い方結構気を付けた方が良いと思われる https://siu3.hatenablog.com/entry/2015/05/16/172501
 	ClientConnectionFinishedFuture = Async(EAsyncExecution::Thread, [&]()
 		{
 			uint32 BufferSize = 4096;
@@ -77,6 +77,7 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 			UE_LOG(LogTemp, Log, TEXT("データリスナー"));
 			ReceiveBuffer.SetNumUninitialized(BufferSize);
 		//TODO パケットの解析をアクターでやらせる
+		//TODO EditAnywhereを使う
 			CallPacketAnalysis* packetAnalysis = new CallPacketAnalysis;
 
 			// データを受信するための無限ループを開始する
