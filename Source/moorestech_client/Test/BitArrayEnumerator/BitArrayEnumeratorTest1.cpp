@@ -32,22 +32,22 @@ bool FBitArrayEnumeratorTest::RunTest(const FString& Parameters)
 	bits = new BitArrayEnumerator(actual);
 	
 	TArray<bool> ans;
-	ans.Add(bits->MoveNextToByte() == 5);
+	ans.Add(bits->MoveNextToByte() == (uint8)5);
+	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToShort() == (int16)5530);
+	ans.Add(bits->MoveNextToByte() == (uint8)240);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToInt() == (int32)132576);
 	ans.Add(bits->MoveNextToBit() == true);
 	ans.Add(bits->MoveNextToBit() == true);
 	ans.Add(bits->MoveNextToBit() == false);
-	ans.Add(bits->MoveNextToShort() == 5530);
-	ans.Add(bits->MoveNextToByte() == 240);
-	ans.Add(bits->MoveNextToBit() == false);
-	ans.Add(bits->MoveNextToShort() == 132576);
 	ans.Add(bits->MoveNextToBit() == true);
-	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToFloat() == (float)140513.6513);
 	ans.Add(bits->MoveNextToBit() == false);
 	ans.Add(bits->MoveNextToBit() == true);
-	ans.Add(bits->MoveNextToFloat() == 140513.6513);
-	ans.Add(bits->MoveNextToBit() == true);
-	ans.Add(bits->MoveNextToBit() == false);
-	ans.Add(bits->MoveNextToShort() == 741);
+	ans.Add(bits->MoveNextToShort() == (int16)741);
 
 	for (int i = 0; i < ans.Num(); ++i)
 	{
