@@ -3,9 +3,9 @@
 class BitArrayEnumerator
 {
 public:
-	BitArrayEnumerator(TArray<uint8> ReceiveBuffer);
+	explicit BitArrayEnumerator(TArray<uint8> ReceiveBuffer);
 	bool MoveNextToBit();
-	int8 MoveNextToByte();
+	uint8 MoveNextToByte();
 	int16 MoveNextToShort();
 	float MoveNextToFloat();
 	int32 MoveNextToInt();
@@ -14,4 +14,5 @@ public:
 private:
 	int index;
 	TArray<uint8> ReceiveBuffer;
+	
 };

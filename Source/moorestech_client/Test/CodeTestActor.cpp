@@ -1,6 +1,6 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
+#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 #include "CodeTestActor.h"
 
 #include <string>
@@ -20,12 +20,55 @@ ACodeTestActor::ACodeTestActor()
 void ACodeTestActor::BeginPlay()
 {
 	Super::BeginPlay();
-	FString ab = "adv-";
-	auto a = ByteArrayConverter::ToByteArray(ab);
-	for (int i = 0;i < a.Num();i++)
+	UE_LOG(LogTemp, Error, TEXT("AAAAA"));
+	TArray<uint8> actual;
+	actual.Add(5);
+	actual.Add(130);
+	actual.Add(179);
+	actual.Add(94);
+	actual.Add(0);
+	actual.Add(0);
+	actual.Add(32);
+	actual.Add(94);
+	actual.Add(13);
+	actual.Add(72);
+	actual.Add(9);
+	actual.Add(56);
+	actual.Add(106);
+	actual.Add(64);
+	actual.Add(185);
+	actual.Add(64);
+
+	BitArrayEnumerator* bits;
+	bits = new BitArrayEnumerator(actual);
+	
+	TArray<bool> ans;
+	ans.Add(bits->MoveNextToByte() == (uint8)5);
+	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToShort() == (int16)5530);
+	ans.Add(bits->MoveNextToByte() == (uint8)240);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToInt() == (int32)132576);
+	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToFloat() == (float)140513.6513);
+	ans.Add(bits->MoveNextToBit() == false);
+	ans.Add(bits->MoveNextToBit() == true);
+	ans.Add(bits->MoveNextToShort() == (int16)741);
+
+	for (int i = 0; i < ans.Num(); ++i)
 	{
-		UE_LOG(LogTemp, Log, TEXT("MyIntValue = %d"), a[i]);
+		if(!ans[i])
+		{
+            UE_LOG(LogTemp, Error, TEXT("Failed at %d"), i);
+		}
 	}
+	UE_LOG(LogTemp, Warning, TEXT("%d"), ans.Num());
+
 }
 
 // Called every frame

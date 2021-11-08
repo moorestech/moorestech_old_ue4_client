@@ -1,4 +1,5 @@
 ﻿#include "ByteArrayConverter.h"
+#include "ReserveUint8Array.h"
 
 #include <string>
 
@@ -13,7 +14,7 @@ TArray<uint8> ByteArrayConverter::ToByteArray(int sendData)
 	}
 	if(endian::IS_LITTLE_ENDIAN())
 	{
-		result = ReserveTArray(result);
+		result = ReserveUint8Array::ReserveTArray(result);
 	}
 	return result;
 }
@@ -26,7 +27,7 @@ TArray<uint8> ByteArrayConverter::ToByteArray(int16 sendData)
 	}
 	if(endian::IS_LITTLE_ENDIAN())
 	{
-		result = ReserveTArray(result);
+		result = ReserveUint8Array::ReserveTArray(result);
 	}
 	return result;
 }
@@ -40,7 +41,7 @@ TArray<uint8> ByteArrayConverter::ToByteArray(float sendData)
 	}
 	if(endian::IS_LITTLE_ENDIAN())
 	{
-		result = ReserveTArray(result);
+		result = ReserveUint8Array::ReserveTArray(result);
 	}
 	return result;
 }
@@ -60,16 +61,4 @@ TArray<uint8> ByteArrayConverter::ToByteArray(FString& sendData)
 	FMemory::Free(messageBytes);	
 
 	return result;
-}
-
-TArray<uint8> ByteArrayConverter::ReserveTArray(TArray<uint8> tarray)
-{
-	for (int i = 0;i < tarray.Num()  /2;i++)
-	{
-		int j = tarray.Num() - 1 - i;
-		int w = tarray[i];
-		tarray[i] = tarray[j];
-		tarray[j] = w;
-	}
-	return tarray;
 }

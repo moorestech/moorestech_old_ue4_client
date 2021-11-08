@@ -1,5 +1,7 @@
 ﻿#include "BitArrayEnumerator.h"
 
+#include "endian.h"
+
 constexpr int BIT_MASK[] = {128 ,64, 32,16,8,4,2,1};
 
 BitArrayEnumerator::BitArrayEnumerator(TArray<uint8> ReceiveBuffer)
@@ -21,9 +23,9 @@ bool BitArrayEnumerator::MoveNextToBit()
 	}
 }
 
-int8 BitArrayEnumerator::MoveNextToByte()
+uint8 BitArrayEnumerator::MoveNextToByte()
 {
-	int8 result = 0;
+	uint8 result = 0;
 	int bitNum = 8;
 	
 	for (int i = 0; i < bitNum; i++)
@@ -45,6 +47,12 @@ int16 BitArrayEnumerator::MoveNextToShort()
 	{
 		byteArray[i] = MoveNextToByte();
 	}
+	if (endian::IS_LITTLE_ENDIAN())
+	{
+		const unsigned char w = byteArray[0];
+		byteArray[0] = byteArray[1];
+		byteArray[1] = w;
+	}
 	FMemory::Memcpy(&result, byteArray, byteNum);
 	
 	return result;
@@ -58,8 +66,17 @@ int32 BitArrayEnumerator::MoveNextToInt()
 	{
 		byteArray[i] = MoveNextToByte();
 	}
+	if (endian::IS_LITTLE_ENDIAN())
+	{
+		for (int i = 0;i < byteNum / 2;i++)
+		{
+			int j = 4 - 1 - i;
+			int w = byteArray[i];
+			byteArray[i] = byteArray[j];
+			byteArray[j] = w;
+		}
+	}
 	FMemory::Memcpy(&result, byteArray, byteNum);
-	
 	return result;
 }
 float BitArrayEnumerator::MoveNextToFloat()
@@ -70,6 +87,16 @@ float BitArrayEnumerator::MoveNextToFloat()
 	for (int i = 0; i < byteNum; i++)
 	{
 		byteArray[i] = MoveNextToByte();
+	}
+	if (endian::IS_LITTLE_ENDIAN())
+	{
+		for (int i = 0;i < byteNum / 2;i++)
+		{
+			int j = 4 - 1 - i;
+			int w = byteArray[i];
+			byteArray[i] = byteArray[j];
+			byteArray[j] = w;
+		}
 	}
 	FMemory::Memcpy(&result, byteArray, byteNum);
 	
