@@ -44,18 +44,20 @@ TArray<uint8> ByteArrayConverter::ToByteArray(float sendData)
 	}
 	return result;
 }
-TArray<uint8> ByteArrayConverter::ToByteArray(FString sendData)
+TArray<uint8> ByteArrayConverter::ToByteArray(FString& sendData)
 {
-	std::string data = std::string(TCHAR_TO_UTF8(*sendData));
-	auto messageChar = new char[data.length()];
-	data.copy(messageChar,data.length()-1);
-	
+	FTCHARToUTF8 Convert(*sendData);
+	int BytesLength = Convert.Length(); //length of the utf-8 string in bytes (when non-latin letters are used, it's longer than just the number of characters)
+	uint8* messageBytes = static_cast<uint8*>(FMemory::Malloc(BytesLength));
+	FMemory::Memcpy(messageBytes, (uint8*)TCHAR_TO_UTF8(sendData.GetCharArray().GetData()), BytesLength); //mcmpy is required, since TCHAR_TO_UTF8 returns an object with a very short lifetime
+
 	TArray<uint8> result;
-	for (int i = 0; i < data.length() ; i++)
+	for (int i = 0; i < BytesLength; i++)
 	{
-		result.Add((uint8)messageChar[i]);
+		result.Add(messageBytes[i]);
 	}
-	delete[] messageChar;
+
+	FMemory::Free(messageBytes);	
 
 	return result;
 }

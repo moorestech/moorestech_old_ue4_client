@@ -20,9 +20,9 @@ ACodeTestActor::ACodeTestActor()
 void ACodeTestActor::BeginPlay()
 {
 	Super::BeginPlay();
-	FString ab = "DNあA";
-	auto a = ByteArrayConverter::ToByteArray("DNあA");
-	for (int i = 0;i < ARRAY_LENGTH(a);i++)
+	FString ab = "adv-";
+	auto a = ByteArrayConverter::ToByteArray(ab);
+	for (int i = 0;i < a.Num();i++)
 	{
 		UE_LOG(LogTemp, Log, TEXT("MyIntValue = %d"), a[i]);
 	}
