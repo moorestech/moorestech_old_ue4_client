@@ -1,8 +1,9 @@
 ﻿#pragma once
+#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
 class PacketAnalysisBase
 {
 public:
 	virtual ~PacketAnalysisBase() = default;
-	virtual void Analysis(TArray<uint8> ReceiveBuffer);
+	virtual void Analysis(BitArrayEnumerator* ReceiveBuffer);
 };
