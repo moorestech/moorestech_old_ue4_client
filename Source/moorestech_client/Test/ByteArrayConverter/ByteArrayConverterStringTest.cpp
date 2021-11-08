@@ -6,7 +6,7 @@ void FByteArrayConverterStringTest::GetTests(TArray<FString>& OutBeautifiedNames
 {
 	//フォーマット　答え,バイト数,byte値1,byte値2,byte値3....
 	OutBeautifiedNames.Add("Test_a"); OutTestCommands.Add("a,1,97");
-	OutBeautifiedNames.Add("Test_abv-"); OutTestCommands.Add("abv-,4,97,100,118,45");
+	OutBeautifiedNames.Add("Test_abv-"); OutTestCommands.Add("abv-,4,97,98,118,45");
 	OutBeautifiedNames.Add("Test_(["); OutTestCommands.Add("([,2,40,91");
 }
 
@@ -35,5 +35,5 @@ bool FByteArrayConverterStringTest::RunTest(const FString& Parameters)
 		}
 	}
 	
-	return ansCnt == 2;
+	return ansCnt == cnt;
 }
