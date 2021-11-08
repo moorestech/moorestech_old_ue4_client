@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "PacketAnalysis/PacketAnalysisBase.h"
 
-class PacketAnalysis
+class CallPacketAnalysis
 {
 public:
 	void Analysis(TArray<uint8> ReceiveBuffer);

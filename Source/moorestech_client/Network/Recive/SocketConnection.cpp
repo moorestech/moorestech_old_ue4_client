@@ -3,7 +3,7 @@
 
 #include "SocketConnection.h"
 
-#include "PacketAnalysis.h"
+#include "CallPacketAnalysis.h"
 #include "Sockets.h"
 #include "SocketSubsystem.h"
 // Sets default values
@@ -76,7 +76,7 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 			FString ResultString;
 			UE_LOG(LogTemp, Log, TEXT("データリスナー"));
 			ReceiveBuffer.SetNumUninitialized(BufferSize);
-			PacketAnalysis* packetAnalysis = new PacketAnalysis;
+			CallPacketAnalysis* packetAnalysis = new CallPacketAnalysis;
 
 			// データを受信するための無限ループを開始する
 			while (bShouldReceiveData)

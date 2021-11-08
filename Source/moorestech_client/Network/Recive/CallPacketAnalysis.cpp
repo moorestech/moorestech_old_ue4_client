@@ -1,10 +1,10 @@
-﻿#include "PacketAnalysis.h"
+﻿#include "CallPacketAnalysis.h"
 
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 #include "PacketAnalysis/ChunkDataPacketAnalysis.h"
 #include "PacketAnalysis/DummyPacketAnalysis.h"
 
-void PacketAnalysis::Analysis(TArray<uint8> ReceiveBuffer)
+void CallPacketAnalysis::Analysis(TArray<uint8> ReceiveBuffer)
 {
 	if (!init)
 	{
