@@ -27,8 +27,6 @@ bool FByteArrayConverterStringTest::RunTest(const FString& Parameters)
 	int ansCnt = 0;
 	for (int i = 0;i < cnt ; i++)
 	{
-		UE_LOG(LogTemp, Log, TEXT("actual %d"), actual[i]);
-		UE_LOG(LogTemp, Log, TEXT("expected %d"), expected[i]);
 		if(actual[i] == expected[i])
 		{
 			ansCnt++;

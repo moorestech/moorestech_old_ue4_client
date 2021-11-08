@@ -53,6 +53,7 @@ bool FBitArrayEnumeratorTest::RunTest(const FString& Parameters)
 	{
 		if(!ans[i])
 		{
+            UE_LOG(LogTemp, Error, TEXT("Failed at %d"), i);
 			return false;
 		}
 	}
