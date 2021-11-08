@@ -1,6 +1,6 @@
 ﻿#include "BitArrayEnumerator.h"
 
-constexpr int BIT_MASK[] = {0, 1, 2, 3};
+constexpr int BIT_MASK[] = {128 ,64, 32,16,8,4,2,1};
 
 BitArrayEnumerator::BitArrayEnumerator(TArray<uint8> ReceiveBuffer)
 {
@@ -23,47 +23,55 @@ bool BitArrayEnumerator::MoveNextToBit()
 
 int8 BitArrayEnumerator::MoveNextToByte()
 {
-	return ReceiveBuffer[index++];
+	int8 result = 0;
+	int bitNum = 8;
+	
+	for (int i = 0; i < bitNum; i++)
+	{
+        if (MoveNextToBit())
+        {
+            result = result | BIT_MASK[i%8];
+        }
+	}
+	
+	return result;
 }
 int16 BitArrayEnumerator::MoveNextToShort()
 {
 	int16 result;
+	int byteNum = 2;
 	unsigned char byteArray[2];
-
-	for (int i = 0; i < 2; i++,index++)
+	for (int i = 0; i < byteNum; i++)
 	{
-		byteArray[index + i] = ReceiveBuffer[index + i];
+		byteArray[i] = MoveNextToByte();
 	}
-
-	FMemory::Memcpy(&result, byteArray, 2);
+	FMemory::Memcpy(&result, byteArray, byteNum);
 	
 	return result;
 }
 int32 BitArrayEnumerator::MoveNextToInt()
 {
-	int result;
+	int32 result;
+	int byteNum = 4;
 	unsigned char byteArray[4];
-
-	for (int i = 0; i < 4; i++,index++)
+	for (int i = 0; i < byteNum; i++)
 	{
-		byteArray[index + i] = ReceiveBuffer[index + i];
+		byteArray[i] = MoveNextToByte();
 	}
-
-	FMemory::Memcpy(&result, byteArray, 4);
+	FMemory::Memcpy(&result, byteArray, byteNum);
 	
 	return result;
 }
 float BitArrayEnumerator::MoveNextToFloat()
 {
 	float result;
+	int byteNum = 4;
 	unsigned char byteArray[4];
-
-	for (int i = 0; i < 4; i++,index++)
+	for (int i = 0; i < byteNum; i++)
 	{
-		byteArray[index + i] = ReceiveBuffer[index + i];
+		byteArray[i] = MoveNextToByte();
 	}
-
-	FMemory::Memcpy(&result, byteArray, 4);
+	FMemory::Memcpy(&result, byteArray, byteNum);
 	
 	return result;
 }
