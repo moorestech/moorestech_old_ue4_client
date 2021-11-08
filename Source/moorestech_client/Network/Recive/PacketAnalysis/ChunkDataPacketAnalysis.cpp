@@ -2,8 +2,6 @@
 
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
-void ChunkDataPacketAnalysis::Analysis(TArray<uint8> ReceiveBuffer)
+void ChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 {
-	BitArrayEnumerator* bit = new BitArrayEnumerator(ReceiveBuffer);
-	
 }

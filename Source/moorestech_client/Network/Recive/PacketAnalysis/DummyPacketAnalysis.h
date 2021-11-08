@@ -5,6 +5,6 @@
 class DummyPacketAnalysis : public PacketAnalysisBase
 {
 public:
-	void Analysis(BitArrayEnumerator* ReceiveBuffer);
+	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator) override;
 };
 

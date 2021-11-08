@@ -4,5 +4,5 @@
 class ChunkDataPacketAnalysis : public PacketAnalysisBase
 {
 public:
-	void Analysis(TArray<uint8> ReceiveBuffer);
+	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator) override;
 };

@@ -5,5 +5,5 @@ class PacketAnalysisBase
 {
 public:
 	virtual ~PacketAnalysisBase() = default;
-	virtual void Analysis(BitArrayEnumerator* ReceiveBuffer);
+	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator);
 };
