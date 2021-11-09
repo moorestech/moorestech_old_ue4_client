@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "CallPacketAnalysis.h"
 #include "SocketConnection.generated.h"
 
 
@@ -35,5 +36,7 @@ private:
 	FThreadSafeBool bShouldReceiveData;
 	TFuture<void> ClientConnectionFinishedFuture;
 	void ConnectToServer(const FString& InIP = TEXT("127.0.0.1"), const int32 InPort = 3000);
+	UPROPERTY(EditAnywhere, Category = "Settings")
+	ACallPacketAnalysis*    packetAnalysis;
 
 };

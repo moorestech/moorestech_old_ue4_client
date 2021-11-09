@@ -76,10 +76,6 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 			FString ResultString;
 			UE_LOG(LogTemp, Log, TEXT("データリスナー"));
 			ReceiveBuffer.SetNumUninitialized(BufferSize);
-		//TODO パケットの解析をアクターでやらせる
-		//TODO EditAnywhereを使う
-			CallPacketAnalysis* packetAnalysis = new CallPacketAnalysis;
-
 			// データを受信するための無限ループを開始する
 			while (bShouldReceiveData)
 			{
