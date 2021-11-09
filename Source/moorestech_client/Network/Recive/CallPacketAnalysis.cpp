@@ -31,7 +31,7 @@ void ACallPacketAnalysis::Analysis(TArray<uint8> ReceiveBuffer)
 	if (!init)
 	{
 		PacketAnalysisBases.Add(new DummyPacketAnalysis());
-		PacketAnalysisBases.Add(new ChunkDataPacketAnalysis());
+		PacketAnalysisBases.Add(ChunkDataPacketAnalysis);
 		init = true;
 	}
 	BitArrayEnumerator* bit = new BitArrayEnumerator(ReceiveBuffer);

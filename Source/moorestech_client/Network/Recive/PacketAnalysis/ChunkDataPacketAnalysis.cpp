@@ -1,8 +1,31 @@
-﻿#include "ChunkDataPacketAnalysis.h"
+// Fill out your copyright notice in the Description page of Project Settings.
+
 
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
+#include "ChunkDataPacketAnalysis.h"
 
-void ChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
+// Sets default values
+AChunkDataPacketAnalysis::AChunkDataPacketAnalysis()
+{
+ 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
+	PrimaryActorTick.bCanEverTick = true;
+
+}
+
+// Called when the game starts or when spawned
+void AChunkDataPacketAnalysis::BeginPlay()
+{
+	Super::BeginPlay();
+	
+}
+
+// Called every frame
+void AChunkDataPacketAnalysis::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+void AChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 {
 	TArray<int> chunkData;
 	int X = BitArrayEnumerator->MoveNextToInt();

@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "PacketAnalysis/ChunkDataPacketAnalysis.h"
 #include "PacketAnalysis/PacketAnalysisBase.h"
 #include "CallPacketAnalysis.generated.h"
 
@@ -27,4 +28,6 @@ public:
 private:
 	TArray<PacketAnalysisBase*> PacketAnalysisBases;
 	bool init = false;
+	UPROPERTY(EditAnywhere, Category = "Settings")
+	AChunkDataPacketAnalysis*    ChunkDataPacketAnalysis;
 };
