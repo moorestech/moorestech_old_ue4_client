@@ -74,7 +74,7 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 			uint32 BufferSize = 4096;
 			TArray<uint8> ReceiveBuffer;
 			FString ResultString;
-			UE_LOG(LogTemp, Log, TEXT("データリスナー"));
+			UE_LOG(LogTemp, Log, TEXT("データリスナー準備完了"));
 			ReceiveBuffer.SetNumUninitialized(BufferSize);
 			// データを受信するための無限ループを開始する
 			while (bShouldReceiveData)
@@ -83,6 +83,7 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 				ClientSocket->Recv(ReceiveBuffer.GetData(), ReceiveBuffer.Num(), Read);
 				packetAnalysis->Analysis(ReceiveBuffer);
 			}
+			UE_LOG(LogTemp, Log, TEXT("ソケットクローズ"));
 		}
 	);
 }
