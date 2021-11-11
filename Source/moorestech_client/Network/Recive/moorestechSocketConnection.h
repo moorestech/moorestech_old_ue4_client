@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "TcpSocketConnection.h"
-#include "CallPacketAnalysis.h"
+#include "PacketAnalysis/ChunkDataPacketAnalysis.h"
 #include "moorestechSocketConnection.generated.h"
 
 /**
@@ -19,7 +19,10 @@ public:
 	void Receive(TArray<uint8> ReceiveBuffer);
 	
 private:
+	TArray<PacketAnalysisBase*> PacketAnalysisBases;
+	bool init = false;
+	
 	UPROPERTY(EditAnywhere, Category = "Settings")
-	ACallPacketAnalysis*    packetAnalysis;
+	AChunkDataPacketAnalysis*    ChunkDataPacketAnalysis;
 	
 };
