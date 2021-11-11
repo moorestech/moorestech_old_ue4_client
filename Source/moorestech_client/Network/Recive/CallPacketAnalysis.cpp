@@ -37,7 +37,11 @@ void ACallPacketAnalysis::Analysis(TArray<uint8> ReceiveBuffer)
 	try
 	{
 		BitArrayEnumerator* bit = new BitArrayEnumerator(ReceiveBuffer);
-		PacketAnalysisBases[bit->MoveNextToShort()]->Analysis(bit);
+		int i = bit->MoveNextToShort();
+		if(i < PacketAnalysisBases.Num())
+		{
+			PacketAnalysisBases[i]->Analysis(bit);	
+		}
 		delete bit;
 	}
 	catch (...)

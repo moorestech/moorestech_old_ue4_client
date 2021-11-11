@@ -120,5 +120,6 @@ void ASocketConnection::CloseSocket()
 		ClientSocket->Close();
 		//ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(ClientSocket);
 		ClientSocket = nullptr;
+		UE_LOG(LogTemp, Log, TEXT("ソケットクローズ"));
 	}
 }
