@@ -10,17 +10,21 @@ void TArrayAddRange::AddRange(TArray<uint8>& ByteArray, TArray<uint8>& Range)
 }
 void TArrayAddRange::AddRange(TArray<uint8>& ByteArray, int data)
 {
-    AddRange(ByteArray,ByteArrayConverter::ToByteArray(data));
+    TArray<uint8> send = ByteArrayConverter::ToByteArray(data);
+    AddRange(ByteArray,send);
 }
 void TArrayAddRange::AddRange(TArray<uint8>& ByteArray, int16 data)
 {
-    AddRange(ByteArray,ByteArrayConverter::ToByteArray(data));
+    TArray<uint8> send = ByteArrayConverter::ToByteArray(data);
+    AddRange(ByteArray,send);
 }
 void TArrayAddRange::AddRange(TArray<uint8>& ByteArray, float data)
 {
-    AddRange(ByteArray,ByteArrayConverter::ToByteArray(data));
+    TArray<uint8> send = ByteArrayConverter::ToByteArray(data);
+    AddRange(ByteArray,send);
 }
 void TArrayAddRange::AddRange(TArray<uint8>& ByteArray, FString& data)
 {
-    AddRange(ByteArray,ByteArrayConverter::ToByteArray(data));
+    TArray<uint8> send = ByteArrayConverter::ToByteArray(data);
+    AddRange(ByteArray,send);
 }
