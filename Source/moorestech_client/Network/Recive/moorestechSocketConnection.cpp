@@ -3,3 +3,10 @@
 
 #include "moorestechSocketConnection.h"
 
+void AmoorestechSocketConnection::Receive(TArray<uint8> ReceiveBuffer)
+{
+	
+	packetAnalysis->Analysis(ReceiveBuffer);
+}
+
+

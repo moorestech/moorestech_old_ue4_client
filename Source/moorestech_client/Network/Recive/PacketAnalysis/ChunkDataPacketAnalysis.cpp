@@ -26,6 +26,7 @@ void AChunkDataPacketAnalysis::Tick(float DeltaTime)
 }
 void AChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 {
+	UE_LOG(LogTemp, Log, TEXT("ChunkDataPacketAnalysis データ受信"));
 	TArray<int> chunkData;
 	int X = BitArrayEnumerator->MoveNextToInt();
 	int Y = BitArrayEnumerator->MoveNextToInt();
