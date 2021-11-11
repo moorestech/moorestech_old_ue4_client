@@ -34,7 +34,14 @@ void ACallPacketAnalysis::Analysis(TArray<uint8> ReceiveBuffer)
 		PacketAnalysisBases.Add(ChunkDataPacketAnalysis);
 		init = true;
 	}
-	BitArrayEnumerator* bit = new BitArrayEnumerator(ReceiveBuffer);
-	PacketAnalysisBases[bit->MoveNextToShort()]->Analysis(bit);
-	delete bit;
+	try
+	{
+		BitArrayEnumerator* bit = new BitArrayEnumerator(ReceiveBuffer);
+		PacketAnalysisBases[bit->MoveNextToShort()]->Analysis(bit);
+		delete bit;
+	}
+	catch (...)
+	{
+		UE_LOG(LogTemp, Error, TEXT("Packet Analysis Error"));
+	}
 }

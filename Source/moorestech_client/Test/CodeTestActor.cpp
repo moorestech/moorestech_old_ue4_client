@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 #include "CodeTestActor.h"
+#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
 #include <string>
 

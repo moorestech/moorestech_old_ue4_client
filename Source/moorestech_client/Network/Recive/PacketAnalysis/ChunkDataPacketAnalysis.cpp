@@ -1,8 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 #include "ChunkDataPacketAnalysis.h"
+#include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
 // Sets default values
 AChunkDataPacketAnalysis::AChunkDataPacketAnalysis()

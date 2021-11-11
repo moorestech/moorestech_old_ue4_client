@@ -17,6 +17,7 @@ ASocketConnection::ASocketConnection()
 // Called when the game starts or when spawned
 void ASocketConnection::BeginPlay()
 {
+	Super::BeginPlay();
 	UE_LOG(LogTemp, Display, TEXT("サーバーへ接続開始"));
 	this->ConnectToServer(TEXT("127.0.0.1"), 11564);
 }
@@ -26,6 +27,11 @@ void ASocketConnection::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+void ASocketConnection::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+	Super::EndPlay(EndPlayReason);
+	this->CloseSocket();
 }
 
 void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
@@ -57,14 +63,14 @@ void ASocketConnection::ConnectToServer(const FString& InIP, const int32 InPort)
 	// フックアップ
 	bIsConnected = ClientSocket->Connect(*RemoteAddress);
 
-	// データを受信する準備ができていると言います
-	bShouldReceiveData = true;
 
 	if(!bIsConnected)
 	{
 		UE_LOG(LogTemp, Error, TEXT("接続失敗"));
 		return;
 	}
+	// データを受信する準備ができていると言います
+	bShouldReceiveData = true;
 
 	UE_LOG(LogTemp, Log, TEXT("データ受信準備"));
 	// データリスナー
@@ -104,15 +110,15 @@ bool ASocketConnection::Emit(const TArray<uint8>& Bytes)
 void ASocketConnection::CloseSocket()
 {
 	// ソケットがある場合
-	if (ClientSocket)
+	if (bShouldReceiveData)
 	{
 		// データの受信を停止します
 		bShouldReceiveData = false;
 
 		//接続を終了します
-		ClientConnectionFinishedFuture.Get();
+		//ClientConnectionFinishedFuture.Get();
 		ClientSocket->Close();
-		ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(ClientSocket);
+		//ISocketSubsystem::Get(PLATFORM_SOCKETSUBSYSTEM)->DestroySocket(ClientSocket);
 		ClientSocket = nullptr;
 	}
 }
