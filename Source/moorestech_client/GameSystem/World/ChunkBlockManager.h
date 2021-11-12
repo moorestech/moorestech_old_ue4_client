@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "moorestech_client/Util/Coordinate.h"
+#include "map"
 #include "ChunkBlockManager.generated.h"
 
 struct ChunkData;
@@ -26,12 +27,12 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 private:
-	TMap<Coordinate,ChunkData> ChunkDataMap;
+	std::map<Coordinate,ChunkData&> ChunkDataMap;
 };
 
 
 struct ChunkData
 {
-	TArray<int> chunkIdData;
-	TArray<AActor> chunkActor;
+	TArray<int>& chunkIdData;
+	TArray<AActor>& chunkActor;
 };

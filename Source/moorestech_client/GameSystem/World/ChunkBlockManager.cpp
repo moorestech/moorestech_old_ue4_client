@@ -2,6 +2,8 @@
 
 
 #include "ChunkBlockManager.h"
+#include "map"
+constexpr int CHUNK_SIZE = 20;
 
 // Sets default values
 AChunkBlockManager::AChunkBlockManager()
@@ -13,7 +15,18 @@ AChunkBlockManager::AChunkBlockManager()
 
 void AChunkBlockManager::AddChunk(int x, int y, TArray<int> chunkData)
 {
-	
+	Coordinate c = {x,y};
+	if (ChunkDataMap.count(c))
+    {
+		ChunkDataMap[c];
+		
+    }else
+	{
+    	/*Array<AActor> a;
+    	a.SetNum(CHUNK_SIZE * CHUNK_SIZE);
+    	ChunkData chunk = {chunkData,a};
+		ChunkDataMap.emplace(c,chunk);*/
+	}
 }
 
 // Called when the game starts or when spawned
