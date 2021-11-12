@@ -1,9 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "moorestech_client/Network/Util/ByteArrayConverter.h"
 #include "AssembleBlockPlaceProtocol.h"
-
+#include "moorestech_client/Network/Util/ByteArrayConverter.h"
 #include "moorestech_client/Network/Util/TArrayAddRange.h"
 
 //TODO 機械のインプット、アウトプットに対応したプロトコルを作成する
