@@ -10,5 +10,6 @@ int AAirBlock::GetBlockId()
 
 void AAirBlock::DeleteBlock()
 {
+	//BP側でアクタの破壊を行う
 	DeleteBlockEvent();
 }

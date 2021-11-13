@@ -17,6 +17,7 @@ public:
 	virtual int GetBlockId() override;
 	virtual void DeleteBlock() override;
 	
+	//BP側でアクタの破壊を行う
 	UFUNCTION(BlueprintImplementableEvent)
 	void DeleteBlockEvent(); 
 	
