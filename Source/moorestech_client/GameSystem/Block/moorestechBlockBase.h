@@ -1,9 +1,13 @@
 ﻿#pragma once
 
-class moorestechBlockBase
+#include "MoorestechBlockBase.generated.h"
+
+UCLASS()
+class AMoorestechBlockBase : public AActor
 {
+	GENERATED_BODY()
 public:
-	virtual ~moorestechBlockBase() = default;
+	virtual ~AMoorestechBlockBase() = default;
 	virtual int GetBlockId();
 	virtual void DeleteBlock();
 	

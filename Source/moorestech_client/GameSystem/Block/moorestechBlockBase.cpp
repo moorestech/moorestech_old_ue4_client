@@ -1,10 +1,10 @@
 #include "moorestechBlockBase.h"
 
-int moorestechBlockBase::GetBlockId()
+int AMoorestechBlockBase::GetBlockId()
 {
 	return 0;
 }
 
-void moorestechBlockBase::DeleteBlock()
+void AMoorestechBlockBase::DeleteBlock()
 {
 }

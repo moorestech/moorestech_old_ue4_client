@@ -14,11 +14,11 @@ AGenerateBlockActor::AGenerateBlockActor()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-moorestechBlockBase* AGenerateBlockActor::GenerateBlock(int32 X, int32 Y, int32 BlockId)
+AMoorestechBlockBase* AGenerateBlockActor::GenerateBlock(int32 X, int32 Y, int32 BlockId)
 {
 	//TODO ここ実装する
-	moorestechBlockBase* air = new AirBlock();
-	return air;
+	return nullptr;
+	
 }
 
 // Called when the game starts or when spawned

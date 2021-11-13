@@ -37,7 +37,7 @@ void AChunkBlockManager::AddChunk(int x, int y, TArray<int> chunkIds)
 		}	
 		return;
 	}
-	TArray<moorestechBlockBase*> chunkBlockBases;
+	TArray<AMoorestechBlockBase*> chunkBlockBases;
 	//まだ存在していないチャンクなので、新しく生成する
 	for (int i = 0; i < chunkIds.Num(); ++i)
 	{

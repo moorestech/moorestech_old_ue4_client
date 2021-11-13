@@ -3,19 +3,20 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "moorestechBlockBase.h"
 #include "GameFramework/Actor.h"
-#include "moorestech_client/GameSystem/Block/moorestechBlockBase.h"
-#include "GenerateBlockActor.generated.h"
+#include "DefaultTestBlock.generated.h"
 
 UCLASS()
-class MOORESTECH_CLIENT_API AGenerateBlockActor : public AActor
+class MOORESTECH_CLIENT_API ADefaultTestBlock : public AMoorestechBlockBase
 {
 	GENERATED_BODY()
 
 public:
 	// Sets default values for this actor's properties
-	AGenerateBlockActor();
-	AMoorestechBlockBase* GenerateBlock(int32 X,int32 Y,int32 BlockId);
+	ADefaultTestBlock();
+	virtual int GetBlockId() override;
+	virtual void DeleteBlock() override;
 
 protected:
 	// Called when the game starts or when spawned
@@ -24,8 +25,4 @@ protected:
 public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-private:
-	
-	UPROPERTY(EditAnywhere, Category = "Settings")
-	TArray<AMoorestechBlockBase*> BlockList; 
 };

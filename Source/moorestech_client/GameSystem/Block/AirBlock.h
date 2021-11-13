@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "moorestechBlockBase.h"
 
-class AirBlock : public moorestechBlockBase
+class AirBlock : public AMoorestechBlockBase
 {
 public:
 	virtual int GetBlockId() override;

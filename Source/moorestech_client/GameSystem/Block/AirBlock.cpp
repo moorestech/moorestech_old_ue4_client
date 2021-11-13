@@ -7,5 +7,5 @@ int AirBlock::GetBlockId()
 
 void AirBlock::DeleteBlock()
 {
-	moorestechBlockBase::DeleteBlock();
+	AMoorestechBlockBase::DeleteBlock();
 }

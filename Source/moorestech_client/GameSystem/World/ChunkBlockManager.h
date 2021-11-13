@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "GenerateBlockActor.h"
 #include "GameFramework/Actor.h"
-#include "moorestech_client/GameSystem/Block/GenerateBlockActor.h"
 #include "moorestech_client/GameSystem/Block/moorestechBlockBase.h"
 #include "ChunkBlockManager.generated.h"
 
@@ -37,5 +37,5 @@ struct ChunkData
 	int X;
 	int Y;
 	TArray<int>& chunkIds;
-	TArray<moorestechBlockBase*>& chunkBlockBases;
+	TArray<AMoorestechBlockBase*>& chunkBlockBases;
 };
