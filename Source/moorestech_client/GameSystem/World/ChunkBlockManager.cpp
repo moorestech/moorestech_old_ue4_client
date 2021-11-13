@@ -13,19 +13,20 @@ AChunkBlockManager::AChunkBlockManager()
 
 }
 
-void AChunkBlockManager::AddChunk(int x, int y, TArray<int> chunkData)
+void AChunkBlockManager::AddChunk(int x, int y, TArray<int> chunkIds)
 {
-	Coordinate c = {x,y};
-	if (ChunkDataMap.count(c))
-    {
-		ChunkDataMap[c];
-		
-    }else
+	for (int i = 0; i < chunks.Num(); ++i)
 	{
-    	/*Array<AActor> a;
-    	a.SetNum(CHUNK_SIZE * CHUNK_SIZE);
-    	ChunkData chunk = {chunkData,a};
-		ChunkDataMap.emplace(c,chunk);*/
+		if (chunks[i].X != x || chunks[i].Y != y)
+			continue;
+		
+		chunks[i].chunkIds = chunkIds;
+		for (int j = 0; j < chunks.Num(); ++j)
+		{
+			//TODO Get block id to re generate chunk
+		}	
+
+		return;
 	}
 }
 
