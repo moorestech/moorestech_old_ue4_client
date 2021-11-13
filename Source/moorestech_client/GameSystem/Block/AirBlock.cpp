@@ -1,11 +1,14 @@
-﻿#include "AirBlock.h"
+// Fill out your copyright notice in the Description page of Project Settings.
 
-int AirBlock::GetBlockId()
+
+#include "AirBlock.h"
+
+int AAirBlock::GetBlockId()
 {
 	return 0;
 }
 
-void AirBlock::DeleteBlock()
+void AAirBlock::DeleteBlock()
 {
-	AMoorestechBlockBase::DeleteBlock();
+	DeleteBlockEvent();
 }
