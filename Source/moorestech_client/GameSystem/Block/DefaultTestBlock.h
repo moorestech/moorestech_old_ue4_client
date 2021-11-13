@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "moorestechBlockBase.h"
 #include "GameFramework/Actor.h"
+#include "moorestech_client/GameSystem/moorestechBlockBase.h"
 #include "DefaultTestBlock.generated.h"
 
 UCLASS()

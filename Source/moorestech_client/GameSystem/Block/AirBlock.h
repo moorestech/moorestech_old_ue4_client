@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "moorestechBlockBase.h"
+#include "moorestech_client/GameSystem/moorestechBlockBase.h"
 #include "AirBlock.generated.h"
 
 /**

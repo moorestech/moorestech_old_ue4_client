@@ -4,7 +4,7 @@
 #include "GenerateBlockActor.h"
 
 #include "moorestech_client/GameSystem/Block/AirBlock.h"
-#include "moorestech_client/GameSystem/Block/moorestechBlockBase.h"
+#include "moorestech_client/GameSystem/moorestechBlockBase.h"
 
 
 // Sets default values
