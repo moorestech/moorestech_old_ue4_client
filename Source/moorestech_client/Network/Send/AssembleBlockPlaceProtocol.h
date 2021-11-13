@@ -15,4 +15,6 @@ class MOORESTECH_CLIENT_API UAssembleBlockPlaceProtocol : public UBlueprintFunct
 	GENERATED_BODY()
 	UFUNCTION(BlueprintCallable, Category = "moorestech Protocol")
 	static TArray<uint8> AssembleBlockPlace(int blockPositionX,int blockPositionY,int blockID);
+	UFUNCTION(BlueprintCallable, Category = "moorestech Protocol")
+	static TArray<uint8> AssembleBlockPlaceIO(int blockPositionX,int blockPositionY,int blockID,int inputBlockIntId,int outputBlockIntId);
 };
