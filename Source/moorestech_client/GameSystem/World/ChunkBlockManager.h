@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "moorestech_client/GameSystem/Block/GenerateBlockActor.h"
+#include "moorestech_client/GameSystem/Block/moorestechBlockBase.h"
 #include "ChunkBlockManager.generated.h"
 
 struct ChunkData;
@@ -20,6 +22,8 @@ public:
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	UPROPERTY(EditAnywhere, Category = "Settings")
+	AGenerateBlockActor*  GenerateBlockActor;
 
 public:	
 	// Called every frame
@@ -33,5 +37,5 @@ struct ChunkData
 	int X;
 	int Y;
 	TArray<int>& chunkIds;
-	TArray<AActor>& chunkActors;
+	TArray<moorestechBlockBase*>& chunkBlockBases;
 };

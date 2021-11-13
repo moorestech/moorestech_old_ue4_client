@@ -21,13 +21,32 @@ void AChunkBlockManager::AddChunk(int x, int y, TArray<int> chunkIds)
 			continue;
 		
 		chunks[i].chunkIds = chunkIds;
-		for (int j = 0; j < chunks.Num(); ++j)
+		for (int j = 0; j < chunkIds.Num(); ++j)
 		{
-			//TODO Get block id to re generate chunk
-		}	
+			//そのブロックIDが違うときに、そのブロックに置き換える
+			if (chunks[i].chunkBlockBases[j]->GetBlockId() != chunkIds[j])
+			{
+				chunks[i].chunkBlockBases[j]->DeleteBlock();
+				delete chunks[i].chunkBlockBases[j];
 
+				const int blockX = x * CHUNK_SIZE + j % CHUNK_SIZE;
+				const int blockY = y * CHUNK_SIZE + j / CHUNK_SIZE;
+				
+				chunks[i].chunkBlockBases[j] = GenerateBlockActor->GenerateBlock(blockX,blockY,chunkIds[j]);
+			}
+		}	
 		return;
 	}
+	TArray<moorestechBlockBase*> chunkBlockBases;
+	//まだ存在していないチャンクなので、新しく生成する
+	for (int i = 0; i < chunkIds.Num(); ++i)
+	{
+		const int blockX = x * CHUNK_SIZE + i % CHUNK_SIZE;
+		const int blockY = y * CHUNK_SIZE + i / CHUNK_SIZE;
+		chunkBlockBases.Add(GenerateBlockActor->GenerateBlock(blockX,blockY,chunkIds[i]));
+	}
+	ChunkData ChunkData = { x,y,chunkIds,chunkBlockBases };
+	chunks.Add(ChunkData);
 }
 
 // Called when the game starts or when spawned
