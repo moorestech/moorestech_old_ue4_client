@@ -27,5 +27,5 @@ public:
 private:
 	
 	UPROPERTY(EditAnywhere, Category = "Settings")
-	TArray<AMoorestechBlockBase*> BlockList; 
+	TArray<UClass*> BlockList; 
 };
