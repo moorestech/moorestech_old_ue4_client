@@ -26,6 +26,10 @@ AMoorestechBlockBase* AGenerateBlockActor::GenerateBlock(int32 X, int32 Y, int32
 		AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[0],pos, rot);
 		return block;
 	}
+	if (BlockId != 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Block X:%d Y:%d"), X, Y);
+	}
 	AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[BlockId],pos, rot);
 	return block;
 }
