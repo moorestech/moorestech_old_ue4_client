@@ -1,10 +1,13 @@
 ﻿#pragma once
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
-class EventPacketAnalysisBase
+UCLASS()
+class AEventPacketAnalysisBase:public AActor
 {
+	GENERATED_BODY()
+	
 public:
-	virtual ~EventPacketAnalysisBase() = default;
+	virtual ~AEventPacketAnalysisBase() = default;
 	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator);
 	
 };

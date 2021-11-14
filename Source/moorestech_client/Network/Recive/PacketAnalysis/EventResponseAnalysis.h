@@ -19,5 +19,5 @@ public:
 	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator) override;
 	
 	UPROPERTY(EditAnywhere, Category = "Settings")
-	TArray<EventPacketAnalysisBase*> EventPacketAnalysisBases;
+	TArray<AEventPacketAnalysisBase*> EventPacketAnalysisBases;
 };
