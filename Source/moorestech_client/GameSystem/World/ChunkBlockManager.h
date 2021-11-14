@@ -15,19 +15,12 @@ class MOORESTECH_CLIENT_API AChunkBlockManager : public AActor
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
-	AChunkBlockManager();
 	void AddChunk(int x,int y,TArray<int>& chunkData);
 
 protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
 	UPROPERTY(EditAnywhere, Category = "Settings")
 	AGenerateBlockActor*  GenerateBlockActor;
 
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 private:
 	TArray<ChunkData> chunks;
 };
