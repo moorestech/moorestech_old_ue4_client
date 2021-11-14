@@ -14,6 +14,6 @@ class MOORESTECH_CLIENT_API UAssemblePlayerPositionProtocol : public UBlueprintF
 {
 	GENERATED_BODY()
 	UFUNCTION(BlueprintCallable, Category = "moorestech Protocol")
-	static TArray<uint8> AssemblePlayerPosition(int x, int y,int playerId);
+	static TArray<uint8> AssemblePlayerPosition(float x, float y,int playerId);
 	
 };
