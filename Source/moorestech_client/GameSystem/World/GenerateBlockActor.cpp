@@ -2,7 +2,7 @@
 
 
 #include "GenerateBlockActor.h"
-#include "moorestech_client/GameSystem/moorestechBlockBase.h"
+#include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 
 
 // Sets default values

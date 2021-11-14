@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
-#include "moorestech_client/GameSystem/moorestechBlockBase.h"
+#include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 #include "GenerateBlockActor.generated.h"
 
 UCLASS()

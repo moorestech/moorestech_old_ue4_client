@@ -3,7 +3,7 @@
 
 #include "ChunkBlockManager.h"
 #include "map"
-#include "moorestech_client/GameSystem/moorestechBlockBase.h"
+#include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 constexpr int CHUNK_SIZE = 20;
 
 // Sets default values

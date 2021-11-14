@@ -2,7 +2,7 @@
 
 
 #include "DefaultTestBlock.h"
-#include "moorestech_client/GameSystem/moorestechBlockBase.h"
+#include "Base/moorestechBlockBase.h"
 
 
 // Sets default values

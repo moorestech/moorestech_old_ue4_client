@@ -2,7 +2,6 @@
 
 
 #include "AirBlock.h"
-#include "moorestech_client/GameSystem/moorestechBlockBase.h"
 
 int AAirBlock::GetBlockId()
 {

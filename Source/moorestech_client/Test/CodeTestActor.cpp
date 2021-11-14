@@ -5,7 +5,7 @@
 
 #include <string>
 
-#include "moorestech_client/GameSystem/moorestechBlockBase.h"
+#include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 #include "moorestech_client/Network/Util/ByteArrayConverter.h"
 #define ARRAY_LENGTH(array) (sizeof(array) / sizeof(array[0]))
 
