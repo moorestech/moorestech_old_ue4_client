@@ -10,20 +10,6 @@ AChunkDataPacketAnalysis::AChunkDataPacketAnalysis()
 	PrimaryActorTick.bCanEverTick = true;
 
 }
-
-// Called when the game starts or when spawned
-void AChunkDataPacketAnalysis::BeginPlay()
-{
-	Super::BeginPlay();
-	
-}
-
-// Called every frame
-void AChunkDataPacketAnalysis::Tick(float DeltaTime)
-{
-	Super::Tick(DeltaTime);
-
-}
 void AChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 {
 	TArray<int> chunkData;
