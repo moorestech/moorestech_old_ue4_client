@@ -4,6 +4,7 @@
 #include "PacketAnalysisBase.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "moorestech_client/GameSystem/World/ChunkBlockManager.h"
 #include "ChunkDataPacketAnalysis.generated.h"
 
 UCLASS()
@@ -23,5 +24,7 @@ protected:
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
-
+private:
+	UPROPERTY(EditAnywhere, Category = "Settings")
+	AChunkBlockManager* ChunkBlockManager;
 };

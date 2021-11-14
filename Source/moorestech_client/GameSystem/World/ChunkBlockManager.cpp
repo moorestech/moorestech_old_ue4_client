@@ -14,7 +14,7 @@ AChunkBlockManager::AChunkBlockManager()
 
 }
 
-void AChunkBlockManager::AddChunk(int x, int y, TArray<int> chunkIds)
+void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
 {
 	for (int i = 0; i < chunks.Num(); ++i)
 	{

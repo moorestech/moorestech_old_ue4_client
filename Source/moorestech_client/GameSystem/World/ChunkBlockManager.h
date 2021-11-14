@@ -17,7 +17,7 @@ class MOORESTECH_CLIENT_API AChunkBlockManager : public AActor
 public:	
 	// Sets default values for this actor's properties
 	AChunkBlockManager();
-	void AddChunk(int x,int y,TArray<int> chunkData);
+	void AddChunk(int x,int y,TArray<int>& chunkData);
 
 protected:
 	// Called when the game starts or when spawned
