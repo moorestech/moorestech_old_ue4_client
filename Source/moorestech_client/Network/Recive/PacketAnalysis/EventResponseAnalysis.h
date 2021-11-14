@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "PacketAnalysisBase.h"
 #include "GameFramework/Actor.h"
-#include "moorestech_client/Network/Recive/EventAnalysis/EventPacketAnalysisBase.h"
+#include "moorestech_client/Network/Recive/EventAnalysis/Base/EventPacketAnalysisBase.h"
 #include "EventResponseAnalysis.generated.h"
 
 UCLASS()
