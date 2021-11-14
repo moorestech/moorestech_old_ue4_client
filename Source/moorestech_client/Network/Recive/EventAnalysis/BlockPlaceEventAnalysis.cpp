@@ -5,5 +5,9 @@
 
 void ABlockPlaceEventAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 {
-	
+	int x = BitArrayEnumerator->MoveNextToInt();
+	int y = BitArrayEnumerator->MoveNextToInt();
+	int id = BitArrayEnumerator->MoveNextToInt();
+
+	ChunkBlockManager->AddBlock(x,y,id);
 }
