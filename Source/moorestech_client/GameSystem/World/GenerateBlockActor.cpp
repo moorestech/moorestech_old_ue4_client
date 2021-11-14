@@ -16,9 +16,17 @@ AMoorestechBlockBase* AGenerateBlockActor::GenerateBlock(int32 X, int32 Y, int32
 {
 	//*100する理由は仮想的な座標を実際のワールド座標に変換する必要があるから
 	FVector pos = {(float)(X * 100), (float)(Y * 100), 0};
-	
 	FRotator rot = {0,0,0};
-	AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[BlockId],pos, rot, FActorSpawnParameters());
+
+	
+	if (BlockList.Num() <= BlockId)
+	{
+		//IDが境界外のときは0(air)をスポーンさせる
+		UE_LOG(LogTemp, Error, TEXT("BlockId is range out of index=%d"), BlockId);
+		AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[0],pos, rot);
+		return block;
+	}
+		AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[0],pos, rot);
 	return block;
 }
 
