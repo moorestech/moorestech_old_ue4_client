@@ -46,3 +46,26 @@ void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
 	chunks.Add(ChunkData);
 }
 
+void AChunkBlockManager::AddBlock(int blockX, int blockY, int blockId)
+{
+	UE_LOG(LogTemp, Warning, TEXT("[moorestech]AddBlockEvent X:%d Y:%d ID:%d"), blockX, blockY,blockId);
+	int chunkX = (blockX / CHUNK_SIZE) * CHUNK_SIZE;
+	int chunkY = (blockY / CHUNK_SIZE) * CHUNK_SIZE;
+	//チャンクが存在しているか確認
+	for (int i = 0; i < chunks.Num(); ++i)
+	{
+		if (chunks[i].X == chunkX && chunks[i].Y == chunkY)
+		{
+			int blockIndex = blockY - chunkY + (blockX - chunkX) * CHUNK_SIZE;
+			//ブロックIDが違うときに、そのブロックに置き換える
+			if (chunks[i].chunkBlockBases[blockIndex]->GetBlockId() != blockId)
+            {
+                chunks[i].chunkBlockBases[blockIndex]->DeleteBlock();
+                delete chunks[i].chunkBlockBases[blockIndex];
+                chunks[i].chunkBlockBases[blockIndex] = GenerateBlockActor->GenerateBlock(blockX, blockY, blockId);
+            }
+		}
+	}
+	
+}
+

@@ -16,6 +16,7 @@ class MOORESTECH_CLIENT_API AChunkBlockManager : public AActor
 	
 public:	
 	void AddChunk(int x,int y,TArray<int>& chunkData);
+	void AddBlock(int blockX,int blockY,int blockId);
 
 protected:
 	UPROPERTY(EditAnywhere, Category = "Settings")
