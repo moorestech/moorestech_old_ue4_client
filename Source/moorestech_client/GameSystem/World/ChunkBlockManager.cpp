@@ -31,8 +31,9 @@ void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
 				chunks[i].chunkBlockBases[j]->DeleteBlock();
 				delete chunks[i].chunkBlockBases[j];
 
-				const int blockX = x * CHUNK_SIZE + j % CHUNK_SIZE;
-				const int blockY = y * CHUNK_SIZE + j / CHUNK_SIZE;
+				//サーバー側でblock[x][y]となっているので、xを割り算して、yを求める。
+				const int blockX = x + i / CHUNK_SIZE;
+				const int blockY = y + i % CHUNK_SIZE;
 				
 				chunks[i].chunkBlockBases[j] = GenerateBlockActor->GenerateBlock(blockX,blockY,chunkIds[j]);
 			}
@@ -43,8 +44,9 @@ void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
 	//まだ存在していないチャンクなので、新しく生成する
 	for (int i = 0; i < chunkIds.Num(); ++i)
 	{
-		const int blockX = x * CHUNK_SIZE + i % CHUNK_SIZE;
-		const int blockY = y * CHUNK_SIZE + i / CHUNK_SIZE;
+		//サーバー側でblock[x][y]となっているので、xを割り算して、yを求める。
+		const int blockX = x + i / CHUNK_SIZE;
+		const int blockY = y + i % CHUNK_SIZE;
 		chunkBlockBases.Add(GenerateBlockActor->GenerateBlock(blockX,blockY,chunkIds[i]));
 	}
 	ChunkData ChunkData = { x,y,chunkIds,chunkBlockBases };
