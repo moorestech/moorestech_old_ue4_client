@@ -56,14 +56,20 @@ void AChunkBlockManager::AddBlock(int blockX, int blockY, int blockId)
 	{
 		if (chunks[i].X == chunkX && chunks[i].Y == chunkY)
 		{
-			int blockIndex = blockY - chunkY + (blockX - chunkX) * CHUNK_SIZE;
+			int blockIndex = (blockY - chunkY) + (blockX - chunkX) * CHUNK_SIZE;
+			//絶対値にする
+			if (blockIndex < 0)
+                blockIndex = -blockIndex;
+			
+			UE_LOG(LogTemp, Warning, TEXT("[moorestech]AddBlockEvent X:%d Y:%d ID:%d chunkX:%d chunkY:%d index:%d"), blockX, blockY, blockId, chunkX, chunkY, blockIndex);
+			
 			//ブロックIDが違うときに、そのブロックに置き換える
-			if (chunks[i].chunkBlockBases[blockIndex]->GetBlockId() != blockId)
+			/*if (chunks[i].chunkBlockBases[blockIndex]->GetBlockId() != blockId)
             {
                 chunks[i].chunkBlockBases[blockIndex]->DeleteBlock();
                 delete chunks[i].chunkBlockBases[blockIndex];
                 chunks[i].chunkBlockBases[blockIndex] = GenerateBlockActor->GenerateBlock(blockX, blockY, blockId);
-            }
+            }*/
 		}
 	}
 	
