@@ -3,7 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "PacketAnalysisBase.h"
+#include "Base/PacketAnalysisBase.h"
 #include "GameFramework/Actor.h"
 #include "moorestech_client/Network/Recive/EventAnalysis/Base/EventPacketAnalysisBase.h"
 #include "EventResponseAnalysis.generated.h"

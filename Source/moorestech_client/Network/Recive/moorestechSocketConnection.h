@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "TcpSocketConnection.h"
 #include "PacketAnalysis/ChunkDataPacketAnalysis.h"
+#include "PacketAnalysis/Base/PacketAnalysisBase.h"
 #include "moorestechSocketConnection.generated.h"
 
 /**

@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "PacketAnalysisBase.h"
+#include "Base/PacketAnalysisBase.h"
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
 class DummyPacketAnalysis : public PacketAnalysisBase
