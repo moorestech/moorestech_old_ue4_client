@@ -11,6 +11,9 @@ void AmoorestechSocketConnection::Receive(TArray<uint8> ReceiveBuffer)
 	{
 		PacketAnalysisBases.Add(new DummyPacketAnalysis());
 		PacketAnalysisBases.Add(ChunkDataPacketAnalysis);
+		//↓WIP
+		PacketAnalysisBases.Add(new DummyPacketAnalysis());
+		PacketAnalysisBases.Add(EventResponseAnalysis);
 		init = true;
 	}
 	try
