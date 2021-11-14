@@ -22,13 +22,13 @@ AMoorestechBlockBase* AGenerateBlockActor::GenerateBlock(int32 X, int32 Y, int32
 	if (BlockList.Num() <= BlockId)
 	{
 		//IDが境界外のときは0(air)をスポーンさせる
-		UE_LOG(LogTemp, Error, TEXT("BlockId is range out of index=%d"), BlockId);
+		UE_LOG(LogTemp, Error, TEXT("[moorestech]BlockId is range out of index=%d"), BlockId);
 		AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[0],pos, rot);
 		return block;
 	}
 	if (BlockId != 0)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Block X:%d Y:%d"), X, Y);
+		UE_LOG(LogTemp, Warning, TEXT("[moorestech]Block X:%d Y:%d"), X, Y);
 	}
 	AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[BlockId],pos, rot);
 	return block;

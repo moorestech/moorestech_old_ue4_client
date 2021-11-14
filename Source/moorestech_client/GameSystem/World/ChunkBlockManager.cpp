@@ -16,6 +16,7 @@ AChunkBlockManager::AChunkBlockManager()
 
 void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
 {
+	UE_LOG(LogTemp, Warning, TEXT("[moorestech]AddChunk X:%d Y:%d"), x, y);
 	for (int i = 0; i < chunks.Num(); ++i)
 	{
 		if (chunks[i].X != x || chunks[i].Y != y)
