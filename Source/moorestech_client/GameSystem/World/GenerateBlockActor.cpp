@@ -26,7 +26,7 @@ AMoorestechBlockBase* AGenerateBlockActor::GenerateBlock(int32 X, int32 Y, int32
 		AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[0],pos, rot);
 		return block;
 	}
-		AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[0],pos, rot);
+	AMoorestechBlockBase* block = GetWorld()->SpawnActor<AMoorestechBlockBase>(BlockList[BlockId],pos, rot);
 	return block;
 }
 
