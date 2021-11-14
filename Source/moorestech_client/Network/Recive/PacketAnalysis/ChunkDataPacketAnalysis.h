@@ -17,13 +17,6 @@ public:
 	AChunkDataPacketAnalysis();
 	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator) override;
 
-protected:
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:	
-	// Called every frame
-	virtual void Tick(float DeltaTime) override;
 private:
 	UPROPERTY(EditAnywhere, Category = "Settings")
 	AChunkBlockManager* ChunkBlockManager;
