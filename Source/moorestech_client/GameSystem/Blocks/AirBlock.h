@@ -14,11 +14,6 @@ class MOORESTECH_CLIENT_API AAirBlock : public AMoorestechBlockBase
 {
 	GENERATED_BODY()
 public:
-	virtual int GetBlockId() override;
-	virtual void DeleteBlock() override;
-	
-	//BP側でアクタの破壊を行う
-	UFUNCTION(BlueprintImplementableEvent)
-	void DeleteBlockEvent(); 
+	virtual int GetBlockId() override; 
 	
 };
