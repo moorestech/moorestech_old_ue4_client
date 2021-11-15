@@ -21,7 +21,7 @@ public:
 	void SetBlock(int blockX,int blockY,int blockId);
 
 	UFUNCTION(BlueprintImplementableEvent,Category=".moorestech")
-	void SetChunkEvent(const int X,const int Y,const TArray<int>& chunkData);
+	void SetChunkEvent(int chunkX,int chunky,TArray<int>& chunkData);
 	UFUNCTION(BlueprintImplementableEvent,Category=".moorestech")
 	void SetBlockEvent(const int blockX,const int blockY,const int blockId);
     
