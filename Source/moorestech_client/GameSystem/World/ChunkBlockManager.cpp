@@ -4,7 +4,6 @@
 #include "ChunkBlockManager.h"
 #include "map"
 #include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
-constexpr int CHUNK_SIZE = 20;
 
 
 void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)

@@ -8,6 +8,9 @@
 #include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 #include "ChunkBlockManager.generated.h"
 
+#define CHUNK_SIZE  20;
+
+
 struct ChunkData;
 UCLASS()
 class MOORESTECH_CLIENT_API AChunkBlockManager : public AActor
