@@ -8,10 +8,11 @@
 
 void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
 {
+	AddChunkEvent(x, y, chunkIds);
 }
 
 void AChunkBlockManager::AddBlock(int blockX, int blockY, int blockId)
 {
-	
+	AddBlockEvent(blockX, blockY, blockId);
 }
 
