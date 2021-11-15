@@ -6,13 +6,13 @@
 #include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 
 
-void AChunkBlockManager::AddChunk(int x, int y, TArray<int>& chunkIds)
+void AChunkBlockManager::SetChunk(int chunkX,int chunky,TArray<int>& chunkData)
 {
-	AddChunkEvent(x, y, chunkIds);
+	SetChunkEvent(chunkX,chunky,chunkData);
 }
 
-void AChunkBlockManager::AddBlock(int blockX, int blockY, int blockId)
+void AChunkBlockManager::SetBlock(int blockX, int blockY, int blockId)
 {
-	AddBlockEvent(blockX, blockY, blockId);
+	SetBlockEvent(blockX, blockY, blockId);
 }
 

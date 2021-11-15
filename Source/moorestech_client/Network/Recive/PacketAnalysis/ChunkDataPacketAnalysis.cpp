@@ -38,5 +38,5 @@ void AChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 			chunkData.Add(0);
 		}
 	}
-	ChunkBlockManager->AddChunk(X,Y,chunkData);
+	ChunkBlockManager->SetChunk(X,Y,chunkData);
 }

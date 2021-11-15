@@ -17,12 +17,12 @@ class MOORESTECH_CLIENT_API AChunkBlockManager : public AActor
 	GENERATED_BODY()
 	
 public:	
-	void AddChunk(int x,int y,TArray<int>& chunkData);
-	void AddBlock(int blockX,int blockY,int blockId);
+	void SetChunk(int chunkX,int chunky,TArray<int>& chunkData);
+	void SetBlock(int blockX,int blockY,int blockId);
 
 	UFUNCTION(BlueprintImplementableEvent,Category=".moorestech")
-	void AddChunkEvent(const int X,const int Y,const TArray<int>& chunkData);
+	void SetChunkEvent(const int X,const int Y,const TArray<int>& chunkData);
 	UFUNCTION(BlueprintImplementableEvent,Category=".moorestech")
-	void AddBlockEvent(const int blockX,const int blockY,const int blockId);
+	void SetBlockEvent(const int blockX,const int blockY,const int blockId);
     
 };
