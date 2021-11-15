@@ -25,11 +25,3 @@ protected:
 private:
 	TArray<ChunkData> chunks;
 };
-
-struct ChunkData
-{
-	int X;
-	int Y;
-	TArray<int>& chunkIds;
-	TArray<AMoorestechBlockBase*>& chunkBlockBases;
-};
