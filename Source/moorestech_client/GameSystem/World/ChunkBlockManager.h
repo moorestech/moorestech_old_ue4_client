@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "GenerateBlockActor.h"
 #include "GameFramework/Actor.h"
 #include "moorestech_client/GameSystem/Blocks/Base/moorestechBlockBase.h"
 #include "ChunkBlockManager.generated.h"
@@ -21,10 +20,9 @@ public:
 	void AddChunk(int x,int y,TArray<int>& chunkData);
 	void AddBlock(int blockX,int blockY,int blockId);
 
-protected:
-	UPROPERTY(EditAnywhere, Category = "Settings")
-	AGenerateBlockActor*  GenerateBlockActor;
-
-private:
-	TArray<ChunkData> chunks;
+	UFUNCTION(BlueprintImplementableEvent,Category="MyF")
+	void AddChunkEvent(const int X,const int Y,const TArray<int>& chunkData);
+	UFUNCTION(BlueprintImplementableEvent,Category="MyF")
+	void AddBlockEvent(const int blockX,const int blockY,const int blockId);
+    
 };
