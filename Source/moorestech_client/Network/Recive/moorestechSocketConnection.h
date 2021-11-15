@@ -17,7 +17,7 @@ class MOORESTECH_CLIENT_API AmoorestechSocketConnection : public ATcpSocketConne
 {
 	GENERATED_BODY()
 public:
-	UFUNCTION(BlueprintCallable,Category="MyF")
+	UFUNCTION(BlueprintCallable,Category=".moorestech")
 	void Receive(TArray<uint8> ReceiveBuffer);
 	
 private:
