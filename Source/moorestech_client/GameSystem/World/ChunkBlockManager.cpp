@@ -19,6 +19,6 @@ void AChunkBlockManager::SetBlock(int blockX, int blockY, int blockId)
 	int chunkY = blockY -  (blockY % ChunkSize);
 	int blockIndex = (blockY % ChunkSize) + (blockX - chunkX) * ChunkSize;
 	
-	SetBlockEvent(chunkX, chunkY, blockIndex, blockId);
+	SetBlockEvent(chunkX, chunkY,blockX,blockY, blockIndex, blockId);
 }
 
