@@ -7,7 +7,7 @@
 
 void AChunkBlockManager::SetChunk(int chunkX,int chunky,TArray<int>& chunkData)
 {
-	//SetChunkEvent(chunkX,chunky,chunkData);
+	SetChunkEvent(chunkX,chunky,chunkData);
 }
 
 //BP側で扱いやすいデータに変換する
@@ -82,6 +82,6 @@ void AChunkBlockManager::SetBlock(int blockX, int blockY, int blockId)
 	int blockIndex = BlockYinChunk + BlockXinChunk * ChunkSize;
 
 	UE_LOG(LogTemp, Warning, TEXT("ChunkX:%d ChunkY:%d BlockX:%d BlockY:%d BlockIndex:%d"),chunkX, chunkY , blockX, blockY, blockIndex);
-	//sSetBlockEvent(chunkX, chunkY,blockX,blockY, blockIndex, blockId);
+	SetBlockEvent(chunkX, chunkY,blockX,blockY, blockIndex, blockId);
 }
 
