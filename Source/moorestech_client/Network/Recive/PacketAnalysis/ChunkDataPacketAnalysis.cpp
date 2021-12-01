@@ -1,12 +1,8 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
 #include "ChunkDataPacketAnalysis.h"
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
-// Sets default values
 AChunkDataPacketAnalysis::AChunkDataPacketAnalysis()
 {
- 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 }

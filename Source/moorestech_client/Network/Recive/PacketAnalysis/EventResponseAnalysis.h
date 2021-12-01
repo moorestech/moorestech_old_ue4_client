@@ -1,6 +1,4 @@
-﻿// Fill out your copyright notice in the Description page of Project Settings.
-
-#pragma once
+﻿#pragma once
 
 #include "CoreMinimal.h"
 #include "Base/PacketAnalysisBase.h"
@@ -14,7 +12,6 @@ class MOORESTECH_CLIENT_API AEventResponseAnalysis : public AActor,public Packet
 	GENERATED_BODY()
 
 public:
-	// Sets default values for this actor's properties
 	AEventResponseAnalysis();
 	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator) override;
 	

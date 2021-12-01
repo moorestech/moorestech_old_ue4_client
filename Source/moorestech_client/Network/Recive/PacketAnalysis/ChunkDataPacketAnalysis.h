@@ -13,7 +13,6 @@ class MOORESTECH_CLIENT_API AChunkDataPacketAnalysis : public AActor,public Pack
 	GENERATED_BODY()
 	
 public:	
-	// Sets default values for this actor's properties
 	AChunkDataPacketAnalysis();
 	virtual void Analysis(BitArrayEnumerator* BitArrayEnumerator) override;
 
