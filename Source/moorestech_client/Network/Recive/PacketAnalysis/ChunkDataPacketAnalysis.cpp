@@ -1,6 +1,7 @@
 #include "ChunkDataPacketAnalysis.h"
 #include "moorestech_client/Network/Util/BitArrayEnumerator.h"
 
+constexpr int CHUNK_EDGE_SIZE = 20;
 AChunkDataPacketAnalysis::AChunkDataPacketAnalysis()
 {
 	PrimaryActorTick.bCanEverTick = true;
@@ -11,7 +12,7 @@ void AChunkDataPacketAnalysis::Analysis(BitArrayEnumerator* BitArrayEnumerator)
 	TArray<int> chunkData;
 	int X = BitArrayEnumerator->MoveNextToInt();
 	int Y = BitArrayEnumerator->MoveNextToInt();
-	for (int i = 0; i < 20*20; ++i)
+	for (int i = 0; i < CHUNK_EDGE_SIZE*CHUNK_EDGE_SIZE; ++i)
 	{
 		if(BitArrayEnumerator->MoveNextToBit())
 		{
