@@ -11,16 +11,6 @@ APlayerInventoryController::APlayerInventoryController()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void APlayerInventoryController::SetInventory(TArray<int>& itemId, TArray<int>& itemAmount)
-{
-	SetInventoryEvent(itemId,itemAmount);
-}
-
-void APlayerInventoryController::SetInventory(int itemSlot, int itemId, int itemAmount)
-{
-	SetInventorySlotEvent(itemSlot, itemId, itemAmount);
-}
-
 // Called when the game starts or when spawned
 void APlayerInventoryController::BeginPlay()
 {
