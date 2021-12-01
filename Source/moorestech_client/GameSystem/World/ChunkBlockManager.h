@@ -20,9 +20,9 @@ public:
 	void SetChunk(int chunkX,int chunky,TArray<int>& chunkData);
 	void SetBlock(int blockX,int blockY,int blockId);
 
-	UFUNCTION(BlueprintImplementableEvent,Category=".moorestech")
+	UFUNCTION(BlueprintImplementableEvent,Category="moorestech")
 	void SetChunkEvent(const int chunkX,const int chunkY,const TArray<int>& chunkData);
-	UFUNCTION(BlueprintImplementableEvent,Category=".moorestech")
+	UFUNCTION(BlueprintImplementableEvent,Category="moorestech")
 	void SetBlockEvent(const int chunkX,const int chunkY,const int blockX,const int blockY,const int chunkDataIndex,const int blockId);
     
 };
