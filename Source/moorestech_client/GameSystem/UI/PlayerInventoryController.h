@@ -13,6 +13,13 @@ class MOORESTECH_CLIENT_API APlayerInventoryController : public AActor
 
 public:
 	APlayerInventoryController();
+	void SetInventory(TArray<int>& itemId,TArray<int>& itemAmount);
+	void SetInventory(int itemSlot, int itemId, int itemAmount);
+	
+	UFUNCTION(BlueprintImplementableEvent,Category="moorestech")
+	void SetInventoryEvent(const TArray<int>& itemId,const TArray<int>& itemAmount);
+	UFUNCTION(BlueprintImplementableEvent,Category="moorestech")
+	void SetInventorySlotEvent(const int itemSlot, const int itemId, const int itemAmount);
 
 protected:
 	virtual void BeginPlay() override;
