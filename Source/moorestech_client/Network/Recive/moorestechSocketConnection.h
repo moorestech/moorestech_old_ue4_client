@@ -4,6 +4,7 @@
 #include "TcpSocketConnection.h"
 #include "PacketAnalysis/ChunkDataPacketAnalysis.h"
 #include "PacketAnalysis/EventResponseAnalysis.h"
+#include "PacketAnalysis/PlayerInventoryPacketAnalysis.h"
 #include "PacketAnalysis/Base/PacketAnalysisBase.h"
 #include "moorestechSocketConnection.generated.h"
 
@@ -23,5 +24,7 @@ private:
 	AChunkDataPacketAnalysis*    ChunkDataPacketAnalysis;
 	UPROPERTY(EditAnywhere, Category = "Settings")
 	AEventResponseAnalysis*    EventResponseAnalysis;
+	UPROPERTY(EditAnywhere, Category = "Settings")
+	APlayerInventoryPacketAnalysis* PlayerInventoryPacketAnalysis;
 	
 };

@@ -1,6 +1,9 @@
 #include "moorestechSocketConnection.h"
 #include "PacketAnalysis/DummyPacketAnalysis.h"
 
+// パケットを受信し、各クラスにパケットのパース処理を振り分けている
+//現状の問題点として、作ったクラスをBPにしてマップに置き、アタッチすることでこれを実現している
+//UE4とC++に詳しくないのでできないが、理想としては全て動的にインスタンスを生成して処理を移譲させたい
 void AmoorestechSocketConnection::Receive(TArray<uint8> ReceiveBuffer)
 {
 	
@@ -8,8 +11,7 @@ void AmoorestechSocketConnection::Receive(TArray<uint8> ReceiveBuffer)
 	{
 		PacketAnalysisBases.Add(new DummyPacketAnalysis());
 		PacketAnalysisBases.Add(ChunkDataPacketAnalysis);
-		//↓WIP
-		PacketAnalysisBases.Add(new DummyPacketAnalysis());
+		PacketAnalysisBases.Add(PlayerInventoryPacketAnalysis);
 		PacketAnalysisBases.Add(EventResponseAnalysis);
 		init = true;
 	}
