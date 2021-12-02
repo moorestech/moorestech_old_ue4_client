@@ -11,8 +11,9 @@ void AmoorestechSocketConnection::Receive(TArray<uint8> ReceiveBuffer)
 	{
 		PacketAnalysisBases.Add(new DummyPacketAnalysis());
 		PacketAnalysisBases.Add(ChunkDataPacketAnalysis);
-		PacketAnalysisBases.Add(PlayerInventoryPacketAnalysis);
+		PacketAnalysisBases.Add(new DummyPacketAnalysis());//他プレイヤーの座標を取得するパケット(WIP)
 		PacketAnalysisBases.Add(EventResponseAnalysis);
+		PacketAnalysisBases.Add(PlayerInventoryPacketAnalysis);
 		init = true;
 	}
 	try
