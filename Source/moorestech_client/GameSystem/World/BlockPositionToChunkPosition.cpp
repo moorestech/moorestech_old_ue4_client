@@ -1,8 +1,5 @@
-// Fill out your copyright notice in the Description page of Project Settings.
-
-
-#include "ChunkBlockManager.h"
 #include "BlockPositionToChunkPosition.h"
+#include "ChunkBlockManager.h"
 
 FVector UBlockPositionToChunkPosition::BlockPositionToChunkPosition(int blockX, int blockY)
 {
