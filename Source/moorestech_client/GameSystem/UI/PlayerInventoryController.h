@@ -15,9 +15,9 @@ public:
 	APlayerInventoryController();
 	
 	UFUNCTION(BlueprintImplementableEvent,Category="moorestech")
-	void SetInventoryEvent(const TArray<int>& itemId,const TArray<int>& itemAmount);
+	void SetInventoryEvent(const TArray<int>& itemId,const TArray<int>& itemCount);
 	UFUNCTION(BlueprintImplementableEvent,Category="moorestech")
-	void SetInventorySlotEvent(const int itemSlot, const int itemId, const int itemAmount);
+	void SetInventorySlotEvent(const int itemSlot, const int itemId, const int itemCount);
 
 protected:
 	virtual void BeginPlay() override;
