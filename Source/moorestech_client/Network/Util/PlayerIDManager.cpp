@@ -6,7 +6,7 @@
 
 void APlayerIDManager::BeginPlay()
 {
-	playerId = (int)(rand() % 2147483647);
+	playerId = (int)(rand() % 999);
 }
 
 int APlayerIDManager::GetPlayerId()
